@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QTabWidget *tabs = new QTabWidget;
     tabs->setMinimumSize(1000,200);
     tabs->addTab(myIsingTab, "so ising");
-
     //TIMER RAND TAB ISING
     QObject::connect(timer,SIGNAL(timeout()),
                      myIsingTab,SLOT(initIsingImage()));
