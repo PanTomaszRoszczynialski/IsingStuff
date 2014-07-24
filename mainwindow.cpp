@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "isingtab.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,11 +14,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     myIsingTab = new IsingTab;
 
+    leVisualTest = new visualTest;
+
 
     //IsingTab *myIsing = new IsingTab;
     QTabWidget *tabs = new QTabWidget;
     tabs->setMinimumSize(400,200);
     tabs->addTab(myIsingTab, "so ising");
+    tabs->addTab(leVisualTest,"very plot");
     //TIMER RAND TAB ISING
     QObject::connect(timer,SIGNAL(timeout()),
                      myIsingTab,SLOT(initIsingImage()));

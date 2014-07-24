@@ -6,6 +6,7 @@
 
 #QMAKE_CXXFLAGS += -static-libgcc
 QT       += core gui
+QT += datavisualization
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
@@ -20,9 +21,11 @@ INCLUDEPATH += d:\Kody\Libs\
 SOURCES  += main.cpp\
          mainwindow.cpp \
          isingtab.cpp \
+    visualtest.cpp
 
 HEADERS  += mainwindow.h \
          isingtab.h \
+    visualtest.h
 
 
 FORMS    += mainwindow.ui

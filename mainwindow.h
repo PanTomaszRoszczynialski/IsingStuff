@@ -13,6 +13,8 @@
 #include <QTabWidget>
 #include <QSlider>
 #include "isingtab.h"
+#include "visualtest.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +36,7 @@ private:
     QHBoxLayout *windowLayout;
     IsingTab *myIsingTab;
     QTabWidget *tabs;
+    visualTest *leVisualTest;
 
 };
 
