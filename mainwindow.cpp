@@ -9,8 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setGeometry(20,300,600,200);
     QTimer *timer = new QTimer(this);
-    timer->setInterval(1000/24);
-    timer->start(1000/24);
+    timer->start(1000/48);
 
     windowLayout = new QHBoxLayout;
 

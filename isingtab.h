@@ -42,6 +42,9 @@ private:
     QScrollBar *couplingSlider;
     QPushButton *resetIsingButton;
 
+    QRgb valA;
+    QRgb valB;
+
 
     QImage isingImage;
 
@@ -59,10 +62,10 @@ public slots:
     void initNeighBors();
     void initFlipMaybe();
     void changeTemp(int T2){
-        T = T2*0.1;
+        T = double(T2)*0.1;
         recalcBoltzman();}
     void changeCoupling(int J2){
-        J = J2*0.1;
+        J = double(J2)*0.1;
         recalcBoltzman();}
 
 signals:

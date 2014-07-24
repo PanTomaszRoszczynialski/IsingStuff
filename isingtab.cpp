@@ -6,13 +6,16 @@
 IsingTab::IsingTab(QWidget *parent) :
     QLabel(parent)
 {
-    J = 1;
-    T = 5.1;
+    J = 1.0;
+    T = 3.0;
     H = 10;
 
     // + Rozdzielczosc IMG z isingiem
-    w = int(200);
-    h = int(200);
+    w = int(420);
+    h = int(420);
+    // Nie wiem gdzie to dac
+    std::vector<double> tmp(5);
+    pstwaPreLoad = tmp;
 
     //isingImage = QImage(w,h,QImage::Format_Mono);
     isingImage = QImage(w,h,QImage::Format_RGB16);
@@ -22,6 +25,12 @@ IsingTab::IsingTab(QWidget *parent) :
     initNeighBors();
     initProbs();
 
+    // KOLORY
+    //valA = QRgb;
+    //valB = QRgb;
+    valA = qRgb(133,22,97);
+    valB = qRgb(44,144,44);
+
 
     isingLayout = new QHBoxLayout;
     isingGroup = new QGroupBox;
@@ -29,7 +38,7 @@ IsingTab::IsingTab(QWidget *parent) :
     initIsingGroup();
     imageLabel = new QLabel;
     initIsingImage();
-    imageLabel->setMinimumSize(300,200);
+    //imageLabel->setFixedSize(w,h);
     imageLabel->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     imageLabel->setScaledContents(true);
   /*
@@ -51,17 +60,18 @@ IsingTab::IsingTab(QWidget *parent) :
 
 void IsingTab::initIsingImage()
 {
-    int w2 = isingImage.width();
-    int h2 = isingImage.height();
-    int r1;
-    QRgb val;
-    for(int i=0; i<w2; ++i){
-        for(int j=0; j<h2; ++j){
-            r1 = 255*(spiny(j,i));
-            val = qRgb(r1%50,120-r1%100,r1%200);
+ //   int w2 = isingImage.width();
+ //   int h2 = isingImage.height();
+ //   int r1;
+ //   QRgb val;
+    for(int i=0; i<w; ++i){
+        for(int j=0; j<h; ++j){
+//            r1 = 255*(spiny(j,i));
+//            val = qRgb(r1%50,120-r1%100,r1%200);
 //            r1 = spiny(j,i);
 //            isingImage.setPixel(i,j,r1);
-            isingImage.setPixel(i,j,val);
+            spiny(j,i) ? isingImage.setPixel(i,j,valB) : isingImage.setPixel(i,j,valA);
+            //isingImage.setPixel(i,j,val);
 
         }
     }
@@ -95,7 +105,7 @@ void IsingTab::initFlipMaybe(){
     for(int i = 0; i < h; ++i){
         for(int j = 0; j < w; ++j){
             //spiny(i,j) = spiny(i,j) ? 1-(rand()%100>50) : 0+(rand()%100>22);
-            spiny(i,j) = (pstwaPreLoad[neighBors(i,j)] > (rand()%4000)*0.001) ?
+            spiny(i,j) = (pstwaPreLoad[neighBors(i,j)] > (rand()%400)*0.01) ?
                         abs(spiny(i,j)-1) : spiny(i,j) ;
         }
     }
@@ -141,8 +151,7 @@ void IsingTab::initIsingGroup(){
 
 }
 void IsingTab::initProbs(){
-    std::vector<double> tmp(5);
-    pstwaPreLoad = tmp;
+
     // WSPOLCZYNNIKI BOLTZMANA DO UZYTKU
     double k;
     for(int i = 0; i < 5; ++i){
