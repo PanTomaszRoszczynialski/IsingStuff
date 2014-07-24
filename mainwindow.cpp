@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setGeometry(20,300,1240,200);
+    this->setGeometry(20,300,600,200);
     QTimer *timer = new QTimer(this);
     timer->setInterval(1000/24);
     timer->start(1000/24);
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //IsingTab *myIsing = new IsingTab;
     QTabWidget *tabs = new QTabWidget;
-    tabs->setMinimumSize(1000,200);
+    tabs->setMinimumSize(400,200);
     tabs->addTab(myIsingTab, "so ising");
     //TIMER RAND TAB ISING
     QObject::connect(timer,SIGNAL(timeout()),

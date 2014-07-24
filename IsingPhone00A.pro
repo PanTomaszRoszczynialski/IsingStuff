@@ -20,11 +20,9 @@ INCLUDEPATH += d:\Kody\Libs\
 SOURCES  += main.cpp\
          mainwindow.cpp \
          isingtab.cpp \
-        ../../../../Kody/Libs/qcustomplot/qcustomplot.cpp \
 
 HEADERS  += mainwindow.h \
          isingtab.h \
-        ../../../../Kody/Libs/qcustomplot/qcustomplot.h \
 
 
 FORMS    += mainwindow.ui

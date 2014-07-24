@@ -11,10 +11,11 @@ IsingTab::IsingTab(QWidget *parent) :
     H = 10;
 
     // + Rozdzielczosc IMG z isingiem
-    w = int(444);
-    h = int(444);
+    w = int(200);
+    h = int(200);
 
-    isingImage = QImage(w,h,QImage::Format_Mono);
+    //isingImage = QImage(w,h,QImage::Format_Mono);
+    isingImage = QImage(w,h,QImage::Format_RGB16);
     spiny = MatrixXd(h,w);
     neighBors = MatrixXd(h,w);
     initSpiny();
@@ -24,10 +25,12 @@ IsingTab::IsingTab(QWidget *parent) :
 
     isingLayout = new QHBoxLayout;
     isingGroup = new QGroupBox;
+    isingGroup->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     initIsingGroup();
     imageLabel = new QLabel;
     initIsingImage();
-    imageLabel->setMinimumSize(1000,200);
+    imageLabel->setMinimumSize(300,200);
+    imageLabel->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     imageLabel->setScaledContents(true);
   /*
     QString g = QString::number(pstwaPreLoad[0]);
@@ -54,11 +57,11 @@ void IsingTab::initIsingImage()
     QRgb val;
     for(int i=0; i<w2; ++i){
         for(int j=0; j<h2; ++j){
-            //r1 = 255*(spiny(j,i));
-            //val = qRgb(r1%50,120-r1%100,r1%200);
-            r1 = spiny(j,i);
-            isingImage.setPixel(i,j,r1);
-//            isingImage.setPixel(i,j,val);
+            r1 = 255*(spiny(j,i));
+            val = qRgb(r1%50,120-r1%100,r1%200);
+//            r1 = spiny(j,i);
+//            isingImage.setPixel(i,j,r1);
+            isingImage.setPixel(i,j,val);
 
         }
     }
