@@ -1,19 +1,19 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QHBoxLayout>
+#include "visualtest.h"
+#include "isingtab.h"
+#include <QSlider>
 #include <QLabel>
-#include <QGroupBox>
-#include <QFormLayout>
-#include <QPushButton>
-#include <cstdlib>
 #include <QTimer>
 #include <QDebug>
+#include <cstdlib>
+#include <QGroupBox>
 #include <QTabWidget>
-#include <QSlider>
-#include "isingtab.h"
-#include "visualtest.h"
+#include <QFormLayout>
+#include <QHBoxLayout>
+#include <QMainWindow>
+#include <QPushButton>
 
 
 namespace Ui {
@@ -33,13 +33,11 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    QHBoxLayout *windowLayout;
-    IsingTab *myIsingTab;
     QTabWidget *tabs;
+    IsingTab *myIsingTab;
     visualTest *leVisualTest;
+    QHBoxLayout *windowLayout;
 
 };
-
-
 
 #endif // MAINWINDOW_H

@@ -16,21 +16,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     leVisualTest = new visualTest;
 
-
-    //IsingTab *myIsing = new IsingTab;
     QTabWidget *tabs = new QTabWidget;
     tabs->setMinimumSize(400,200);
     tabs->addTab(myIsingTab, "so ising");
     tabs->addTab(leVisualTest,"very plot");
-    //TIMER RAND TAB ISING
+
+    // TIMER RAND TAB ISING
     QObject::connect(timer,SIGNAL(timeout()),
                      myIsingTab,SLOT(initIsingImage()));
 
-
     this->setCentralWidget(tabs);
     this->setWindowTitle("YOLO");
-
-
 }
 
 MainWindow::~MainWindow()

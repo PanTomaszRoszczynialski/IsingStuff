@@ -30,16 +30,18 @@ public:
     ~IsingTab();
 
 private:
-    Ui::IsingTab *ui;
+    Ui::IsingTab* ui;
+
     MatrixXd spiny;
     MatrixXd neighBors;
-    QHBoxLayout *isingLayout;
+
     QLabel *imageLabel;
     QGroupBox *isingGroup;
-    QFormLayout *isingGroupLayout;
     QTextEdit *debugPlace;
     QScrollBar *tempSlider;
+    QHBoxLayout *isingLayout;
     QScrollBar *couplingSlider;
+    QFormLayout *isingGroupLayout;
     QPushButton *resetIsingButton;
 
     QRgb valA;
@@ -61,10 +63,14 @@ public slots:
     void initIsingImage();
     void initNeighBors();
     void initFlipMaybe();
-    void changeTemp(int T2){
+
+    void changeTemp(int T2)
+    {
         T = double(T2)*0.1;
         recalcBoltzman();}
-    void changeCoupling(int J2){
+
+    void changeCoupling(int J2)
+    {
         J = double(J2)*0.1;
         recalcBoltzman();}
 

@@ -13,6 +13,7 @@ IsingTab::IsingTab(QWidget *parent) :
     // + Rozdzielczosc IMG z isingiem
     w = int(420);
     h = int(420);
+
     // Nie wiem gdzie to dac
     std::vector<double> tmp(5);
     pstwaPreLoad = tmp;
@@ -78,14 +79,18 @@ void IsingTab::initIsingImage()
     imageLabel->setPixmap(QPixmap::fromImage(isingImage));
     initFlipMaybe();
 }
-void IsingTab::initSpiny(){
+
+void IsingTab::initSpiny()
+{
     for(int i = 0; i < h; ++i){
         for(int j = 0; j < w; ++j){
             spiny(i,j) = (rand()%100>50);
         }
     }
 }
-void IsingTab::initNeighBors(){
+
+void IsingTab::initNeighBors()
+{
     for(int i = 0; i < h; ++i){
         for(int j = 0; j < w; ++j){
             int iNext = i==h-1 ? 0 : i+1;
@@ -100,8 +105,9 @@ void IsingTab::initNeighBors(){
     }
 
 }
-void IsingTab::initFlipMaybe(){
 
+void IsingTab::initFlipMaybe()
+{
     for(int i = 0; i < h; ++i){
         for(int j = 0; j < w; ++j){
             //spiny(i,j) = spiny(i,j) ? 1-(rand()%100>50) : 0+(rand()%100>22);
@@ -112,7 +118,8 @@ void IsingTab::initFlipMaybe(){
     initNeighBors();
 }
 
-void IsingTab::initIsingGroup(){
+void IsingTab::initIsingGroup()
+{
     isingGroupLayout = new QFormLayout(isingGroup);
     debugPlace = new QTextEdit;
     tempSlider = new QScrollBar;
@@ -150,8 +157,9 @@ void IsingTab::initIsingGroup(){
                      this->debugPlace,SLOT(setText(QString)) );
 
 }
-void IsingTab::initProbs(){
 
+void IsingTab::initProbs()
+{
     // WSPOLCZYNNIKI BOLTZMANA DO UZYTKU
     double k;
     for(int i = 0; i < 5; ++i){
@@ -159,7 +167,9 @@ void IsingTab::initProbs(){
         pstwaPreLoad[i] = k ;
     }
 }
-void IsingTab::recalcBoltzman(){
+
+void IsingTab::recalcBoltzman()
+{
     QString bug = QString("T: ");
     bug.append(QString::number(T));
     bug.append("\nJ: ");

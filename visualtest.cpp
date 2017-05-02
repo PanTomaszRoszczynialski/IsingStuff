@@ -4,7 +4,6 @@
 visualTest::visualTest(QWidget *parent) :
     QWidget(parent)
 {
-
     Q3DScatter scatter;
     scatter.setFlags(scatter.flags() ^ Qt::FramelessWindowHint);
     QScatter3DSeries *series = new QScatter3DSeries;
